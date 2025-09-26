@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1>Welcome to <%= applicationName %></h1>
+    <p class="lead">
+      Sample project to explore different database systems with Node.js.
+    </p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-12">
+    <h2>Database Connection Status</h2>
+    <div class="row">
+      <!-- MongoDB Status -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">MongoDB</h5>
+          </div>
+          <div class="card-body text-center">
+            <span
+              class="badge <%= statuses.mongo === 'connected' ? 'bg-success' : 'bg-danger' %>"
+            >
+              <%= statuses.mongo === 'connected' ? 'Connected' : 'Disconnected'
+              %>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MySQL Status -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">MySQL</h5>
+          </div>
+          <div class="card-body text-center">
+            <span
+              class="badge <%= statuses.mysql === 'connected' ? 'bg-success' : 'bg-danger' %>"
+            >
+              <%= statuses.mysql === 'connected' ? 'Connected' : 'Disconnected'
+              %>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Redis Status -->
+      <div class="col-md-4">
+        <div class="card shadow-sm">
+          <div class="card-header bg-dark text-white">
+            <h5 class="mb-0">Redis</h5>
+          </div>
+          <div class="card-body text-center">
+            <span
+              class="badge <%= statuses.redis === 'connected' ? 'bg-success' : 'bg-danger' %>"
+            >
+              <%= statuses.redis === 'connected' ? 'Connected' : 'Disconnected'
+              %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

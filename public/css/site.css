@@ -1,0 +1,7 @@
+body {
+  padding-top: 5rem;
+}
+.badge.bg-primary:hover {
+  background-color: #6c757d !important; /* Darker grey for hover */
+  color: white !important; /* White text for better contrast */
+}

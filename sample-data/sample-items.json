@@ -1,0 +1,284 @@
+[
+  {
+    "name": "Mozartkugel",
+    "price": 32.29,
+    "tags": ["Food", "Chocolate", "Traditional"],
+    "sku": "500741"
+  },
+  {
+    "name": "Schnitzel",
+    "price": 23.97,
+    "tags": ["Food", "Meat", "Traditional"],
+    "sku": "106079"
+  },
+  {
+    "name": "Apfelstrudel",
+    "price": 71.49,
+    "tags": ["Food", "Dessert", "Baking"],
+    "sku": "805884"
+  },
+  {
+    "name": "Sachertorte",
+    "price": 68.81,
+    "tags": ["Food", "Dessert", "Chocolate"],
+    "sku": "592032"
+  },
+  {
+    "name": "Kaiser Roll",
+    "price": 63.91,
+    "tags": ["Food", "Bread", "Traditional"],
+    "sku": "608621"
+  },
+  {
+    "name": "Stroh Rum",
+    "price": 70.05,
+    "tags": ["Drink", "Alcohol", "Traditional"],
+    "sku": "786257"
+  },
+  {
+    "name": "Viennese Coffee",
+    "price": 19.99,
+    "tags": ["Drink", "Coffee", "Caf\u00e9"],
+    "sku": "585523"
+  },
+  {
+    "name": "Lederhosen",
+    "price": 120.49,
+    "tags": ["Clothing", "Traditional", "Culture"],
+    "sku": "532209"
+  },
+  {
+    "name": "Dirndl",
+    "price": 89.95,
+    "tags": ["Clothing", "Traditional", "Fashion"],
+    "sku": "616421"
+  },
+  {
+    "name": "Almdudler",
+    "price": 15.29,
+    "tags": ["Drink", "Soda", "Herbal"],
+    "sku": "914338"
+  },
+  {
+    "name": "Sound of Music CD",
+    "price": 25.99,
+    "tags": ["Music", "Pop Culture"],
+    "sku": "637620"
+  },
+  {
+    "name": "Falco Greatest Hits CD",
+    "price": 20.99,
+    "tags": ["Music", "Pop Culture"],
+    "sku": "223322"
+  },
+  {
+    "name": "Edelweiss Seeds",
+    "price": 12.5,
+    "tags": ["Nature", "Gardening"],
+    "sku": "946034"
+  },
+  {
+    "name": "Salzburg Snow Globe",
+    "price": 18.99,
+    "tags": ["Souvenir", "Winter"],
+    "sku": "497884"
+  },
+  {
+    "name": "Tyrolean Hat",
+    "price": 45.0,
+    "tags": ["Clothing", "Traditional"],
+    "sku": "765727"
+  },
+  {
+    "name": "Arnold Schwarzenegger Mug",
+    "price": 16.99,
+    "tags": ["Souvenir", "Pop Culture"],
+    "sku": "333554"
+  },
+  {
+    "name": "Vienna Philharmonic CD",
+    "price": 27.5,
+    "tags": ["Music", "Classical"],
+    "sku": "954657"
+  },
+  {
+    "name": "Linzer Torte",
+    "price": 49.0,
+    "tags": ["Food", "Dessert"],
+    "sku": "847957"
+  },
+  {
+    "name": "Classic Austrian Postcard",
+    "price": 5.0,
+    "tags": ["Souvenir", "Travel"],
+    "sku": "242578"
+  },
+  {
+    "name": "Danube River Magnet",
+    "price": 7.99,
+    "tags": ["Souvenir", "Travel"],
+    "sku": "155442"
+  },
+  {
+    "name": "Strudel Cutter",
+    "price": 15.99,
+    "tags": ["Kitchen", "Tool"],
+    "sku": "844113"
+  },
+  {
+    "name": "Kaiserschmarrn Mix",
+    "price": 10.49,
+    "tags": ["Food", "Dessert"],
+    "sku": "682618"
+  },
+  {
+    "name": "Vienna Opera Binoculars",
+    "price": 99.99,
+    "tags": ["Art", "Accessory"],
+    "sku": "467049"
+  },
+  {
+    "name": "Bergk\u00e4se",
+    "price": 30.0,
+    "tags": ["Food", "Cheese"],
+    "sku": "997710"
+  },
+  {
+    "name": "Zwetschgenkn\u00f6del",
+    "price": 21.49,
+    "tags": ["Food", "Dessert"],
+    "sku": "886624"
+  },
+  {
+    "name": "Wachau Wine",
+    "price": 34.99,
+    "tags": ["Drink", "Wine", "Region"],
+    "sku": "883761"
+  },
+  {
+    "name": "Vienna Sausage",
+    "price": 14.99,
+    "tags": ["Food", "Meat"],
+    "sku": "579848"
+  },
+  {
+    "name": "Tiroler Hut",
+    "price": 39.99,
+    "tags": ["Clothing", "Hat", "Traditional"],
+    "sku": "715238"
+  },
+  {
+    "name": "Arnold Mug",
+    "price": 16.99,
+    "tags": ["Souvenir", "Pop Culture"],
+    "sku": "997757"
+  },
+  {
+    "name": "Zwetschkenr\u00f6ster Jam",
+    "price": 10.99,
+    "tags": ["Food", "Jam"],
+    "sku": "715200"
+  },
+  {
+    "name": "Handmade Edelweiss Pin",
+    "price": 12.99,
+    "tags": ["Accessory", "Souvenir"],
+    "sku": "417114"
+  },
+  {
+    "name": "Austrian Flag Keychain",
+    "price": 4.99,
+    "tags": ["Souvenir", "Patriotism"],
+    "sku": "408658"
+  },
+  {
+    "name": "Vienna Melange Mug",
+    "price": 9.99,
+    "tags": ["Drink", "Souvenir", "Coffee"],
+    "sku": "583066"
+  },
+  {
+    "name": "Arnold Schwarzenegger T-Shirt",
+    "price": 19.99,
+    "tags": ["Clothing", "Pop Culture"],
+    "sku": "754684"
+  },
+  {
+    "name": "Tyrolean Socks",
+    "price": 12.99,
+    "tags": ["Clothing", "Traditional"],
+    "sku": "748600"
+  },
+  {
+    "name": "Viennese Waltz Music Box",
+    "price": 49.99,
+    "tags": ["Music", "Souvenir"],
+    "sku": "785028"
+  },
+  {
+    "name": "Glockenspiel",
+    "price": 35.99,
+    "tags": ["Music", "Traditional"],
+    "sku": "355260"
+  },
+  {
+    "name": "Schladminger Blanket",
+    "price": 89.99,
+    "tags": ["Home", "Traditional"],
+    "sku": "257666"
+  },
+  {
+    "name": "Arnold Movie Poster",
+    "price": 14.99,
+    "tags": ["Souvenir", "Pop Culture"],
+    "sku": "825600"
+  },
+  {
+    "name": "Carved Wooden Edelweiss",
+    "price": 19.99,
+    "tags": ["Art", "Souvenir"],
+    "sku": "282899"
+  },
+  {
+    "name": "Austrian Cookbook",
+    "price": 24.99,
+    "tags": ["Food", "Book"],
+    "sku": "131140"
+  },
+  {
+    "name": "Vienna Ring Tram Toy",
+    "price": 29.99,
+    "tags": ["Toy", "Souvenir"],
+    "sku": "644556"
+  },
+  {
+    "name": "Danube River Puzzle",
+    "price": 22.99,
+    "tags": ["Game", "Souvenir"],
+    "sku": "435326"
+  },
+  {
+    "name": "Mountain Climbing Guidebook",
+    "price": 34.99,
+    "tags": ["Book", "Nature"],
+    "sku": "966849"
+  },
+  {
+    "name": "Salzburg Opera Ticket Holder",
+    "price": 19.99,
+    "tags": ["Accessory", "Travel"],
+    "sku": "180030"
+  },
+  {
+    "name": "Handmade Austrian Doll",
+    "price": 59.99,
+    "tags": ["Toy", "Traditional"],
+    "sku": "250187"
+  },
+  {
+    "name": "Vienna Imperial Candle",
+    "price": 24.99,
+    "tags": ["Home", "Decor"],
+    "sku": "593269"
+  }
+]

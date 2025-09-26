@@ -1,0 +1,65 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1 class="mb-4">Manage Users</h1>
+
+    <% if (users && users.length) { %>
+      <table class="table table-hover align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Email</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach((user) => { %>
+            <tr>
+              <td>
+                <a href="/admin/user/impersonate/<%= user.id %>" class="text-decoration-none"><%= user.email %></a>
+              </td>
+              <td>
+                <a class="btn btn-primary btn-sm me-1" href="/admin/user/<%= user.id %>" role="button">Edit</a>
+                <a class="btn btn-danger btn-sm" href="/admin/user/delete/<%= user.id %>" role="button">Delete</a>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p class="lead">No users found.</p>
+    <% } %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card shadow-sm">
+      <div class="card-header bg-secondary text-white">
+        <% if (!user) { %>
+          <h5 class="mb-0">Create User</h5>
+        <% } else { %>
+          <h5 class="mb-0">Edit User</h5>
+        <% } %>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="/admin/user" autocomplete="off">
+          <input type="hidden" name="userId" value="<%= user ? user.id : '' %>">
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input id="email" type="email" class="form-control" name="email" autocomplete="off" value="<%= user ? user.email : '' %>" placeholder="Enter email">
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input id="password" type="password" class="form-control" name="password" autocomplete="off" placeholder="Enter password">
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">Submit</button>
+            <a class="btn btn-danger" href="/admin/user" role="button">Reset</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

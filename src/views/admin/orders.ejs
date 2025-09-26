@@ -1,0 +1,66 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <h1>All Orders</h1>
+  </div>
+</div>
+
+<% if (orders && orders.length > 0) { %>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Status</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th>Items</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% orders.forEach((order) => { %>
+        <tr>
+          <td><%= order.id %></td>
+          <td><%= order.status %></td>
+          <td><%= order.email %></td>
+          <td><%= order.createdAt %></td>
+
+          <td>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% order.OrderItems.forEach((item) => { %>
+                  <tr>
+                    <td><%= item.sku %></td>
+                    <td><%= item.qty %></td>
+                    <td><%= item.price %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </td>
+
+          <td>
+            <% if (order.status !== 'Shipped') { %>
+              <a class="m-1 btn btn-danger" href="/admin/orders/setshipped/<%= order.id %>" role="button">
+                Set Shipped
+              </a>
+            <% } else { %>
+              <a class="m-1 btn btn-danger disabled" href="/admin/orders/setshipped/<%= order.id %>" role="button">
+                Order Shipped
+              </a>
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+<% } else { %>
+  <p class="lead">Nothing in here.</p>
+<% } %>
