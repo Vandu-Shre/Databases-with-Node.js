@@ -25,12 +25,16 @@ export default async function (fastify) {
       //Fetch basket contents from Redis
       const key = basketKey(req);
       const basket = await fastify.redis.hGetAll(key);
-      const items = Object.entries(basket).map(([sku, quantity]) => {
+      const items = await Promise.all(
+      Object.entries(basket).map(async ([sku, quantity]) => {
+        const item = await fastify.Item.findOne({ sku });
         return {
           sku,
+          name: item ? item.name : "Unknown Item",
+          price: item ? item.price : "NA",
           quantity: parseInt(quantity, 10)
         };
-      });
+      }));
 
 
       return reply.view("basket.ejs", {
@@ -108,7 +112,49 @@ export default async function (fastify) {
 
       fastify.log.info("Processing basket purchase...");
       // TODO: Retrieve basket items from Redis and process purchase
+      const key = basketKey(req);
+      const basket = await fastify.redis.hGetAll(key);
+      const items = await Promise.all(
+      Object.entries(basket).map(async ([sku, quantity]) => {
+        const item = await fastify.Item.findOne({ sku });
+        if(!item) throw new Error(`Could not find item with SKU: ${sku}`)
+        return {
+          sku,
+          name: item.name,
+          price: item.price,
+          quantity: parseInt(quantity, 10)
+        };
+      }));
+
       // TODO: Clear the basket after successful purchase
+      const sequelize = fastify.sequelize;
+      await sequelize.transaction(async (transaction)=> {
+        const user = req.session.get("user");
+        const order = await fastify.models.Order.create(
+          {
+            userId: user.id,
+            email: user.email,
+            status: "Pending"
+          }, 
+          { transaction }
+        );
+
+        for (const item of items) {
+          try {
+            await fastify.models.OrderItem.create({
+              orderId: order.id,
+              sku: item.sku,
+              name: item.name,
+              price: item.price,
+              qty: item.quantity
+            }, { transaction });
+          } catch (err) {
+            console.error(err);
+          }
+        }
+
+        await fastify.redis.del(key);
+      })
 
       req.session.set("messages", [
         {

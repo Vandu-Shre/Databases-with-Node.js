@@ -1,53 +1,61 @@
 import fp from "fastify-plugin";
 import { Sequelize } from "sequelize";
-import { readdir } from 'fs/promises';
+import { readdir } from "fs/promises";
 import path from "path";
 
 async function sequelizePlugin(fastify, config) {
   let mysqlStatus = "disconnected";
+  let sequelize; // make it visible to onClose
 
-  // TODO: Connect to MySQL via Sequelize and update the status
   try {
-    const sequelize = new Sequelize(config.uri, config.options);
+    sequelize = new Sequelize(config.uri, config.options);
     await sequelize.authenticate();
     fastify.log.info("Connected to MySQL");
     mysqlStatus = "connected";
-    fastify.decorate("sequellize", sequelize);
 
-    //Models
-    const models = {}
-    const modelsPath = path.resolve("src/models/sequelize")
+    // ✅ correct decoration key
+    fastify.decorate("sequelize", sequelize);
+
+    // Load models
+    const models = {};
+    const modelsPath = path.resolve("src/models/sequelize");
     const modelFiles = await readdir(modelsPath);
 
-    for(const file of modelFiles) {
-      if(file.endsWith(".js")){
-        const model = (await import(path.join(modelsPath, file))).default(sequelize, Sequelize.DataTypes)
+    for (const file of modelFiles) {
+      if (file.endsWith(".js")) {
+        const defineModel = (await import(path.join(modelsPath, file))).default;
+        const model = defineModel(sequelize, Sequelize.DataTypes);
         models[model.name] = model;
-        fastify.log.info(`Sequalize model ${model.name} loaded successfully`);
+        fastify.log.info(`Sequelize model ${model.name} loaded successfully`);
       }
     }
 
-    Object.values(models).forEach((model)=>{
-      if(model.associate){
+    // Setup associations if present
+    for (const model of Object.values(models)) {
+      if (typeof model.associate === "function") {
         model.associate(models);
       }
-    })
+    }
 
-    await sequelize.sync({ alter: false })
-    fastify.log.info("Sequalize models synced successfully")
-    fastify.decorate("models", models)
+    await sequelize.sync({ alter: false });
+    fastify.log.info("Sequelize models synced successfully");
+
+    // Expose models
+    fastify.decorate("models", models);
   } catch (error) {
     fastify.log.error("Failed to connect to MySQL");
     throw error;
   }
+
   fastify.decorate("mysqlStatus", () => mysqlStatus);
 
   // Graceful shutdown
-  fastify.addHook("onClose", async (fastifyInstance, done) => {
+  fastify.addHook("onClose", async () => {
     mysqlStatus = "disconnected";
-    // TODO: Close Sequelize connection
-    await sequelize.close();
-    done();
+    if (fastify.sequelize) {
+      await fastify.sequelize.close(); // ✅ use decorated instance
+      fastify.log.info("Sequelize connection closed");
+    }
   });
 }
 
