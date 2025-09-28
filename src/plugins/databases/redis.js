@@ -1,27 +1,20 @@
+// plugins/databases/redis.js
 import fp from "fastify-plugin";
-import Redis from "ioredis";
+import { createClient } from "redis";
 
 async function redisPlugin(fastify, config) {
-  let redisStatus = "disconnected";
+  const client = createClient({
+    url: `redis://${config.host}:${config.port}`
+  });
 
-  // Connect to Redis and update the status
-  try {
-    const redis = new Redis(config.host, config.port);
-    redisStatus = "connected";
-    fastify.log.info("Connected to Redis");
-    fastify.decorate("redis", redis);
-  } catch (error) {
-    fastify.log.error("Failed to connect to Redis")
-    throw error;
-  }
-  fastify.decorate("redisStatus", () => redisStatus);
+  client.on("error", (err) => fastify.log.error({ err }, "Redis error"));
+  await client.connect();
 
-  // Graceful shutdown
-  fastify.addHook("onClose", async (fastifyInstance, done) => {
-    redisStatus = "disconnected";
-    // Close Redis connection
-    await fastify.redis.quit();
-    done();
+  fastify.decorate("redis", client);
+  fastify.decorate("redisStatus", () => "connected");
+
+  fastify.addHook("onClose", async () => {
+    await client.quit();
   });
 }
 

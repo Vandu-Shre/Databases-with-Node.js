@@ -116,7 +116,7 @@ export default async function (fastify) {
 
     try {
       // Placeholder: Impersonate user by ID
-      const user = await fastify.medels.User.findByPk(id);
+      const user = await fastify.models.User.findByPk(id);
         if(!user) {
           request.session.set("messages", [
           { type: "danger", text: "Could not find User" }
